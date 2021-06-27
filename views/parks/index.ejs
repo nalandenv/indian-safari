@@ -8,9 +8,10 @@
 </head>
 <body>
     <h1>List of Indian National Parks</h1>
+    <a href="/nationalparks/new">Add National Park</a>
     <ul>
         <% for(let p of parks){ %> 
-            <li><%= p.title %> </li>
+            <li><a href="/nationalparks/<%= p._id %>"><%= p.title %></a></li>
         <% } %> 
     </ul>  
 </body>

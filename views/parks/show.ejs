@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>National Park Details</title>
+</head>
+<body>
+    <h1><%= park.title %></h1>
+    <h4>Location:<%= park.location %> </h3>
+    <div>
+        <span>Entry Fee: <%= park.entry %> INR</span>
+        <p><%= park.description %> </p>
+    </div>
+    <div>
+        <a href="/nationalparks">All National Parks</a>
+        <a href="/nationalparks/<%= park._id %>/edit">Edit</a>
+    </div>
+    <form action="/nationalparks/<%= park._id%>?_method=DELETE" method="POST">
+        <button>DELETE</button>
+    </form>
+</body>
+</html>
