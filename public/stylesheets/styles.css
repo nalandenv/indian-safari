@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:wght@700&display=swap');
+
+body{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    font-family: 'Lobster Two', cursive;
+    background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.5), 
+          rgba(0, 0, 0, 0.5)
+        ),
+        url("/assets/homebg.jpg") no-repeat center center fixed;
+  }
+
+
+  .center {
+      font-weight: 700;
+      text-align: center;
+      margin-top: 300px;
+      color: rgba(0, 0, 0, 0.7);
+  }
+  h1 {
+      font-size: 85px;
+      margin-bottom: 10px;
+  }
+
+  hr {
+      width: 600px;
+      margin-bottom: auto;
+      border: solid 1px rgba(0, 0, 0, 0.7);
+  }
+
+  /* codepen css */
+  #hello:hover {
+    letter-spacing: 0.8em;
+    background-color: #000000;
+  }
+  
+  #hello {
+    color: white;
+  }
+  button {
+    height: 4em;
+    width: 10%;
+    padding: 1.5em auto;
+    margin: 1em auto;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: none;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5em;
+    transition: all 0.2s cubic-bezier(.4,0,.2,1);
+  }

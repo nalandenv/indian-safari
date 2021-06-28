@@ -6,12 +6,12 @@
             <div>
                 <div class="mb-3">
                     <label class="form-label" for="title">Name</label>
-                    <input class="form-control" type="text" value="<%= park.title %>" name="title" id="title">
+                    <input class="form-control" type="text" value="<%= park.title %>" name="title" id="title" required>
                 </div>
                 <div class="row mb-3">
                     <div class="col">
                         <label class="form-label" for="location">Location (State)</label>
-                        <input class="form-control" type="text" value="<%= park.location %>" name="location" id="location">
+                        <input class="form-control" type="text" value="<%= park.location %>" name="location" id="location" required>
                     </div>
                     <div class="col">
                         <label class="form-label" for="entry">Entry fee</label>
@@ -19,17 +19,17 @@
                             <div class="input-group-prepend">
                               <div class="input-group-text">₹</div>
                             </div>
-                            <input type="number" class="form-control" value="<%= park.entry %>" id="entry" name="entry">
+                            <input type="number" class="form-control" value="<%= park.entry %>" id="entry" name="entry" required>
                           </div>
                     </div>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="image">Image URL</label>
-                    <input class="form-control" type="text" id="image" name="image" value="<%= park.image %>">
+                    <input class="form-control" type="text" id="image" name="image" value="<%= park.image %>" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label" for="description">Description</label>
-                    <textarea class="form-control" name="description" id="description" cols="30" rows="5">
+                    <textarea class="form-control" name="description" id="description" cols="30" rows="5" required>
                         <%= park.description %>
                     </textarea>
                 </div>

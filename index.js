@@ -7,10 +7,11 @@ const NationalPark = require('./models/nationalParks');
 const nationalParks = require('./models/nationalParks');
 const ejsMate = require('ejs-mate');
 
-mongoose.connect('mongodb://localhost:27017/national-park', {
+mongoose.connect(process.env.DATABASEURL, {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify:false
 });
 
 const db = mongoose.connection;
@@ -73,4 +74,5 @@ app.delete('/nationalparks/:id', async ( req, res ) => {
     res.redirect('/nationalparks');
 })
 
-app.listen(3000, () => console.log('Serving on port 3000'));
+// app.listen(3000, () => console.log('Serving on port 3000'));
+app.listen(process.env.PORT, process.env.IP);
