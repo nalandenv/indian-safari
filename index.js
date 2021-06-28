@@ -5,6 +5,7 @@ const path = require('path');
 const methodOverride = require('method-override');
 const NationalPark = require('./models/nationalParks');
 const nationalParks = require('./models/nationalParks');
+const ejsMate = require('ejs-mate');
 
 mongoose.connect('mongodb://localhost:27017/national-park', {
     useNewUrlParser: true,
@@ -18,7 +19,7 @@ db.once("open", () => {
     console.log("Database Connected");
 })
 
-
+app.engine('ejs', ejsMate);
 app.set('view engine','ejs');
 app.set('views',path.join(__dirname, 'views'));
 app.use(express.urlencoded({extended: true}));
