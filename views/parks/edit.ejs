@@ -1,33 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit National Park Details</title>
-</head>
-<body>
-    <h1>Edit Details</h1>
-    <form action="/nationalparks/<%=park._id%>?_method=PUT" method="POST">
-        <div>
-            <label for="title">Name</label>
-            <input type="text" name="title" id="title" value="<%= park.title %> ">
-
-            <label for="location">Location (State)</label>
-            <input type="text" name="location" id="location" value="<%= park.location %> ">
-        </div>
-        <br>
-        <div>
-            <label for="entry">Entry fee</label>
-            <input type="text" id="entry" name="entry" value="<%= park.entry %> ">
-        </div>
-        <br>
-        <div>
-            <label for="description">Description</label>
-            <textarea name="description" id="description" cols="30" rows="5"><%= park.description %> </textarea>
-        </div>
-        <button>Submit</button>
-    </form>
-    <a href="/nationalparks">All National Parks</a>
-</body>
-</html>
+<% layout(('/layouts/boilerplate.ejs')) %> 
+<div class="row">
+    <h1 class="text-center mb-5">Edit <%= park.title  %> </h1>
+    <div class="col-6 offset-3">
+        <form action="/nationalparks/<%=park._id%>?_method=PUT" method="POST">
+            <div>
+                <div class="mb-3">
+                    <label class="form-label" for="title">Name</label>
+                    <input class="form-control" type="text" value="<%= park.title %>" name="title" id="title">
+                </div>
+                <div class="row mb-3">
+                    <div class="col">
+                        <label class="form-label" for="location">Location (State)</label>
+                        <input class="form-control" type="text" value="<%= park.location %>" name="location" id="location">
+                    </div>
+                    <div class="col">
+                        <label class="form-label" for="entry">Entry fee</label>
+                        <div class="input-group mb-2">
+                            <div class="input-group-prepend">
+                              <div class="input-group-text">₹</div>
+                            </div>
+                            <input type="number" class="form-control" value="<%= park.entry %>" id="entry" name="entry">
+                          </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="image">Image URL</label>
+                    <input class="form-control" type="text" id="image" name="image" value="<%= park.image %>">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" name="description" id="description" cols="30" rows="5">
+                        <%= park.description %>
+                    </textarea>
+                </div>
+            </div>
+            <button class="btn btn-primary mb-3">Submit</button>
+        </form>
+        <a class="btn btn-dark" href="/nationalparks">All National Parks</a>
+    </div>
+</div>

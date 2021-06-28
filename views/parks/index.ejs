@@ -1,9 +1,31 @@
 <% layout(('/layouts/boilerplate.ejs')) %> 
-
-<h1>List of Indian National Parks</h1>
-<a href="/nationalparks/new">Add National Park</a>
+<div class="d-flex flex-row justify-content-between">
+    <div class="p-2">
+        <h1>All National Parks</h1>
+    </div>
+    <div class="p-2">
+        <a class="btn btn-primary" href="/nationalparks/new">Add National Park</a>
+    </div>
+</div>
 <ul>
     <% for(let p of parks){ %> 
-        <li><a href="/nationalparks/<%= p._id %>"><%= p.title %></a></li>
+        <div class="card mb-3">
+            <div class="row">
+                <div class="col-md-4">
+                    <img class="img-fluid" src="<%= p.image %> " alt="">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><%= p.title %> </h5>
+                        <p class="card-text"><%= p.description %> </p>
+                        <p class="card-text">
+                            <small class="text-muted"><%= p.location %> </small>
+                        </p>
+                        <a class="btn btn-dark" href="/nationalparks/<%= p._id %> ">View <%= p.title %> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     <% } %> 
 </ul>  
+
