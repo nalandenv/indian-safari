@@ -74,5 +74,7 @@ app.delete('/nationalparks/:id', async ( req, res ) => {
     res.redirect('/nationalparks');
 })
 
-// app.listen(3000, () => console.log('Serving on port 3000'));
-app.listen(process.env.PORT, process.env.IP);
+const PORT = process.env.PORT || 3000;
+app.listen( PORT, () => {
+    console.log(`Serving on Port: ${PORT}`);
+})
