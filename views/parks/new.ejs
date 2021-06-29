@@ -2,7 +2,7 @@
     <div class="row">
         <h1 class="text-center mb-5">New National Park</h1>
         <div class="col-6 offset-3">
-            <form action="/nationalparks" method="POST">
+            <form class="validated-form" action="/nationalparks" method="POST" novalidate >
                 <div>
                     <div class="mb-3">
                         <label class="form-label" for="title">Name</label>
@@ -19,7 +19,7 @@
                                 <div class="input-group-prepend">
                                   <div class="input-group-text">₹</div>
                                 </div>
-                                <input type="number" class="form-control" id="entry" name="entry" placeholder="00" required>
+                                <input type="text" class="form-control" id="entry" name="entry" placeholder="00" required>
                               </div>
                         </div>
                     </div>
@@ -36,6 +36,4 @@
             </form>
             <a class="btn btn-dark" href="/nationalparks">All National Parks</a>
         </div>
-        
     </div>
-    
