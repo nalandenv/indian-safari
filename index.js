@@ -3,6 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
 const methodOverride = require('method-override');
+const Joi = require('joi')
 const NationalPark = require('./models/nationalParks');
 const nationalParks = require('./models/nationalParks');
 const ejsMate = require('ejs-mate');
@@ -31,6 +32,23 @@ app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + "/public"));
 
+const validateNationalPark = ( req, res, next ) => {
+    const nationalParksSchema = Joi.object({
+        title: Joi.string().required(),
+        entry: Joi.number().required().min(0),
+        location: Joi.string().required(),
+        description: Joi.string().required(),
+        image: Joi.string().required()
+    })
+    const { error } = nationalParksSchema.validate(req.body);
+    if(error){
+        const msg = error.details.map(el => el.message).join(',');
+        throw new ExpressError(msg, 400);
+    } else {
+        next();
+    }
+}
+
 app.get('/', ( req, res ) => {
     res.render('home');
 });
@@ -44,8 +62,8 @@ app.get('/nationalparks/new', ( req, res ) => {
     res.render('parks/new');
 });
 
-app.post('/nationalparks',catchAsync(async ( req, res, next ) => {
-        if(!req.body) throw new ExpressError('Invalid Data', 400);
+app.post('/nationalparks', validateNationalPark, catchAsync(async ( req, res, next ) => {
+        // if(!req.body) throw new ExpressError('Invalid Data', 400);
         const data = req.body;
         const newPark = new NationalPark(data);
         await newPark.save();
@@ -63,7 +81,7 @@ app.get('/nationalparks/:id', catchAsync(async ( req, res) => {
     res.render('parks/show', { park });
 }));
 
-app.put('/nationalparks/:id', catchAsync(async ( req, res ) => {
+app.put('/nationalparks/:id', validateNationalPark, catchAsync(async ( req, res ) => {
     const id = req.params.id;
     const data = req.body;
     const newPark =await NationalPark.findByIdAndUpdate(id,{...data});
