@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const app = express();
 const path = require('path');
 const methodOverride = require('method-override');
-const Joi = require('joi')
+const {nationalParksSchema} = require('./schemas.js');
 const NationalPark = require('./models/nationalParks');
 const nationalParks = require('./models/nationalParks');
 const ejsMate = require('ejs-mate');
@@ -33,13 +33,6 @@ app.use(methodOverride('_method'));
 app.use(express.static(__dirname + "/public"));
 
 const validateNationalPark = ( req, res, next ) => {
-    const nationalParksSchema = Joi.object({
-        title: Joi.string().required(),
-        entry: Joi.number().required().min(0),
-        location: Joi.string().required(),
-        description: Joi.string().required(),
-        image: Joi.string().required()
-    })
     const { error } = nationalParksSchema.validate(req.body);
     if(error){
         const msg = error.details.map(el => el.message).join(',');
